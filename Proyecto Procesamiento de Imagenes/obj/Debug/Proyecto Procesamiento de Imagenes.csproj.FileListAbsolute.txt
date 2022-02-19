@@ -1,0 +1,16 @@
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Proyecto Procesamiento de Imagenes.exe.config
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Proyecto Procesamiento de Imagenes.exe
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Proyecto Procesamiento de Imagenes.pdb
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csprojAssemblyReference.cache
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto_Procesamiento_de_Imagenes.Properties.Resources.resources
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csproj.GenerateResource.cache
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csproj.CoreCompileInputs.cache
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.exe
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.pdb
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto_Procesamiento_de_Imagenes.IDD_Imagenes.resources
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto_Procesamiento_de_Imagenes.IDD_Videos.resources
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Interop.WMPLib.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\AxInterop.WMPLib.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Interop.WMPLib.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\AxInterop.WMPLib.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csproj.ResolveComReference.cache
