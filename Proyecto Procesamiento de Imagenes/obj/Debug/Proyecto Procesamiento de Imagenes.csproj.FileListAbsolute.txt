@@ -1,16 +1,25 @@
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Proyecto Procesamiento de Imagenes.exe.config
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Proyecto Procesamiento de Imagenes.exe
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Proyecto Procesamiento de Imagenes.pdb
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csprojAssemblyReference.cache
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto_Procesamiento_de_Imagenes.Properties.Resources.resources
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csproj.GenerateResource.cache
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csproj.CoreCompileInputs.cache
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.exe
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.pdb
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto_Procesamiento_de_Imagenes.IDD_Imagenes.resources
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto_Procesamiento_de_Imagenes.IDD_Videos.resources
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Interop.WMPLib.dll
-D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\AxInterop.WMPLib.dll
 D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Interop.WMPLib.dll
 D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\AxInterop.WMPLib.dll
 D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csproj.ResolveComReference.cache
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto_Procesamiento_de_Imagenes.IDD_Imagenes.resources
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto_Procesamiento_de_Imagenes.IDD_Videos.resources
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto_Procesamiento_de_Imagenes.Properties.Resources.resources
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csproj.GenerateResource.cache
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csproj.CoreCompileInputs.cache
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Proyecto Procesamiento de Imagenes.exe.config
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Proyecto Procesamiento de Imagenes.exe
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Proyecto Procesamiento de Imagenes.pdb
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Emgu.CV.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Emgu.CV.GPU.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Emgu.CV.ML.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Emgu.CV.UI.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Emgu.Util.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Emgu.CV.xml
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Emgu.CV.UI.xml
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Emgu.Util.xml
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\Interop.WMPLib.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\bin\Debug\AxInterop.WMPLib.dll
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csproj.CopyComplete
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.exe
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.pdb
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csprojAssemblyReference.cache

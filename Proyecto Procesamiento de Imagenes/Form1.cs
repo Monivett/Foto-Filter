@@ -363,10 +363,13 @@ namespace Proyecto_Procesamiento_de_Imagenes
             this.Close();
         }
 
-     
+        private void IDD_Imagenes_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void BTN_Original_Click(object sender, EventArgs e){
-            //Invertimos la imagen, saca su negativo
+           
             int x = 0;
             int y = 0;
 

@@ -299,6 +299,8 @@
             this.Name = "IDD_Imagenes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Filtro de Imágenes";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.IDD_Imagenes_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.groupBox2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

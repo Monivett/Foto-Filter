@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IDD_Videos));
+            this.components = new System.ComponentModel.Container();
             this.BTN_Salir = new System.Windows.Forms.Button();
             this.BTN_IMAGEN = new System.Windows.Forms.Button();
             this.BTN_VIDEOS = new System.Windows.Forms.Button();
@@ -43,14 +43,17 @@
             this.BTN_Contraste = new System.Windows.Forms.Button();
             this.BTN_GUARDAR = new System.Windows.Forms.Button();
             this.BTN_Examinar = new System.Windows.Forms.Button();
-            this.axWindowsMediaPlayer2 = new AxWMPLib.AxWindowsMediaPlayer();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.lblRuta = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.BTN_Play = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imageBox1 = new Emgu.CV.UI.ImageBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.BTN_Pausa = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,6 +127,7 @@
             this.BTN_Original.TabIndex = 56;
             this.BTN_Original.Text = "Original";
             this.BTN_Original.UseVisualStyleBackColor = false;
+            this.BTN_Original.Click += new System.EventHandler(this.BTN_Original_Click);
             // 
             // groupBox2
             // 
@@ -150,6 +154,7 @@
             this.BTN_GRADIENTE.TabIndex = 10;
             this.BTN_GRADIENTE.Text = "Gradiente";
             this.BTN_GRADIENTE.UseVisualStyleBackColor = false;
+            this.BTN_GRADIENTE.Click += new System.EventHandler(this.BTN_GRADIENTE_Click);
             // 
             // BTN_Invertir
             // 
@@ -171,6 +176,7 @@
             this.BTN_Ruido.TabIndex = 8;
             this.BTN_Ruido.Text = "Ruido";
             this.BTN_Ruido.UseVisualStyleBackColor = false;
+            this.BTN_Ruido.Click += new System.EventHandler(this.BTN_Ruido_Click);
             // 
             // BTN_Grises
             // 
@@ -181,6 +187,7 @@
             this.BTN_Grises.TabIndex = 7;
             this.BTN_Grises.Text = "Grises";
             this.BTN_Grises.UseVisualStyleBackColor = false;
+            this.BTN_Grises.Click += new System.EventHandler(this.BTN_Grises_Click);
             // 
             // BTN_Contraste
             // 
@@ -191,6 +198,7 @@
             this.BTN_Contraste.TabIndex = 6;
             this.BTN_Contraste.Text = "Contraste";
             this.BTN_Contraste.UseVisualStyleBackColor = false;
+            this.BTN_Contraste.Click += new System.EventHandler(this.BTN_Contraste_Click);
             // 
             // BTN_GUARDAR
             // 
@@ -215,15 +223,6 @@
             this.BTN_Examinar.UseVisualStyleBackColor = false;
             this.BTN_Examinar.Click += new System.EventHandler(this.BTN_Examinar_Click);
             // 
-            // axWindowsMediaPlayer2
-            // 
-            this.axWindowsMediaPlayer2.Enabled = true;
-            this.axWindowsMediaPlayer2.Location = new System.Drawing.Point(0, 0);
-            this.axWindowsMediaPlayer2.Name = "axWindowsMediaPlayer2";
-            this.axWindowsMediaPlayer2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer2.OcxState")));
-            this.axWindowsMediaPlayer2.Size = new System.Drawing.Size(753, 469);
-            this.axWindowsMediaPlayer2.TabIndex = 1;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -238,18 +237,6 @@
             this.lblRuta.TabIndex = 59;
             this.lblRuta.Text = "Ruta: ";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.axWindowsMediaPlayer2);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(56, 195);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(753, 469);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Vídeo";
-            // 
             // BTN_Play
             // 
             this.BTN_Play.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
@@ -262,12 +249,56 @@
             this.BTN_Play.UseVisualStyleBackColor = false;
             this.BTN_Play.Click += new System.EventHandler(this.BTN_Play_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // imageBox1
+            // 
+            this.imageBox1.Location = new System.Drawing.Point(0, 27);
+            this.imageBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.imageBox1.Name = "imageBox1";
+            this.imageBox1.Size = new System.Drawing.Size(753, 442);
+            this.imageBox1.TabIndex = 3;
+            this.imageBox1.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.imageBox1);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.groupBox1.Location = new System.Drawing.Point(56, 195);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(753, 469);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Vídeo";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // BTN_Pausa
+            // 
+            this.BTN_Pausa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
+            this.BTN_Pausa.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BTN_Pausa.Location = new System.Drawing.Point(244, 746);
+            this.BTN_Pausa.Name = "BTN_Pausa";
+            this.BTN_Pausa.Size = new System.Drawing.Size(143, 46);
+            this.BTN_Pausa.TabIndex = 60;
+            this.BTN_Pausa.Text = "Pausa";
+            this.BTN_Pausa.UseVisualStyleBackColor = false;
+            this.BTN_Pausa.Click += new System.EventHandler(this.BTN_Pausa_Click);
+            // 
             // IDD_Videos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(16)))), ((int)(((byte)(29)))));
             this.ClientSize = new System.Drawing.Size(1245, 971);
+            this.Controls.Add(this.BTN_Pausa);
             this.Controls.Add(this.BTN_Play);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblRuta);
@@ -280,9 +311,10 @@
             this.Name = "IDD_Videos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IDD_Videos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -305,10 +337,13 @@
         private System.Windows.Forms.Button BTN_Contraste;
         private System.Windows.Forms.Button BTN_GUARDAR;
         private System.Windows.Forms.Button BTN_Examinar;
-        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lblRuta;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button BTN_Play;
+        private System.Windows.Forms.ImageList imageList1;
+        private Emgu.CV.UI.ImageBox imageBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button BTN_Pausa;
     }
 }
