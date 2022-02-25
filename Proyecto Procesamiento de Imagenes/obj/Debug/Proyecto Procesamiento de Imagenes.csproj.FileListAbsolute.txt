@@ -23,3 +23,4 @@ D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento d
 D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.exe
 D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.pdb
 D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto Procesamiento de Imagenes.csprojAssemblyReference.cache
+D:\Documentos\FCFM Documentos\Procesamiento de Imagenes\Proyecto Procesamiento de Imagenes\obj\Debug\Proyecto_Procesamiento_de_Imagenes.Histograma.resources

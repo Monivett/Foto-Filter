@@ -8,22 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Proyecto_Procesamiento_de_Imagenes
-{
-    public partial class IDD_Imagenes : Form
-    {
+namespace Proyecto_Procesamiento_de_Imagenes {
+    public partial class IDD_Imagenes : Form {
         private Bitmap original;
         private Bitmap resultante;
-        private int[] histograma = new int[256];
+        private int[] histogramaR = new int[256];
+        private int[] histogramaG = new int[256];
+        private int[] histogramaB = new int[256];
         private int[,] conv3x3 = new int[3, 3];
         private int factor;
         private int offset;
+        int[] popo;
+
+        //VENTANAS
+        Histograma hformR;
+        Histograma hformG;
+        Histograma hformB;
+        
         Bitmap resized;
+        bool bolHistograma = false;
         //Variables para el double buffer y el flicker
         PaintEventArgs p;
         private int AnchoV, AltoV;
-        public IDD_Imagenes()
-        {
+        public IDD_Imagenes() {
             InitializeComponent();
 
             //Creamos el bitmap resultante del cuadro
@@ -36,8 +43,8 @@ namespace Proyecto_Procesamiento_de_Imagenes
 
         private void BTN_Examinar_Click(object sender, EventArgs e){
            
-            if(openFileDialog1.ShowDialog() == DialogResult.OK) { //Si el usuario dio OK al open dialog
-
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) { //Si el usuario dio OK al open dialog
+             
                 //Se carga la imagen
                 original = (Bitmap)(Bitmap.FromFile(openFileDialog1.FileName)); //Path del archivo
                 resized = new Bitmap(original, new Size(350, 300));
@@ -48,6 +55,34 @@ namespace Proyecto_Procesamiento_de_Imagenes
                 resultante = resized;
 
                 this.Invalidate(); //Lleva acabo el dibujo de la ventana
+
+                //HISTOGRAMA
+                int x = 0;
+                int y = 0;
+                Color rColor = new Color();
+
+                for (x = 0; x < AnchoV; x++) {
+
+                    for (y = 0; y < AltoV; y++) {
+                        //Obtenemos el color del pixel
+                        rColor = resultante.GetPixel(x, y);
+                        histogramaR[rColor.R]++;
+                        histogramaG[rColor.G]++;
+                        histogramaB[rColor.B]++;
+                    }
+                }
+                hformR = new Histograma(histogramaR, "Rojo");
+                hformR.Text = "Rojo";
+                hformR.Show();
+                hformG = new Histograma(histogramaG, "Verde");
+                hformG.Location = new Point(950,150);
+                hformG.Text = "Verde";
+                hformG.Show();
+                hformB = new Histograma(histogramaB, "Azul");
+                hformB.Text = "Azúl";
+                hformB.Location = new Point(650, 350);
+                hformB.Show();
+
             }
         }
 
@@ -96,7 +131,9 @@ namespace Proyecto_Procesamiento_de_Imagenes
      
 
         private void BTN_Invertir_Click(object sender, EventArgs e){
-           
+            
+            LimpiarHistogramas();
+
             //Invertimos la imagen, saca su negativo
             int x = 0;
             int y = 0;
@@ -122,10 +159,25 @@ namespace Proyecto_Procesamiento_de_Imagenes
                 }
             }
 
-                this.Invalidate();
+            for (x = 0; x < AnchoV; x++) {
+
+                for (y = 0; y < AltoV; y++) {
+                    //Obtenemos el color del pixel
+                    rColor = resultante.GetPixel(x, y);
+                    histogramaR[rColor.R]++;
+                    histogramaG[rColor.G]++;
+                    histogramaB[rColor.B]++;
+                }
+            }
+            MostrarHistogramas(histogramaR, histogramaG, histogramaB);
+
+
+            this.Invalidate();
+            
         }
 
         private void BTN_GRADIENTE_Click(object sender, EventArgs e) {
+
             float r1 = 120;
             float g1 = 230;
             float b1 = 120;
@@ -146,10 +198,13 @@ namespace Proyecto_Procesamiento_de_Imagenes
             int y = 0;
 
             Color oColor;
-            //Color rColor;
+            Color rColor;
 
             //Obtenemos los tonos de gris
             BTN_Grises_Click(sender, e);
+
+
+            LimpiarHistogramas();
 
             for (x = 0; x < AnchoV; x++){
 
@@ -179,13 +234,12 @@ namespace Proyecto_Procesamiento_de_Imagenes
                     if (b > 255) {
                         b = 255;
                     }
-                    else if (b < 0)
-                    {
+                    else if (b < 0) {
                         b = 0;
                     }
 
                     //Colocamos el color en el resultante
-                    resultante.SetPixel(x, y, Color.FromArgb(r,g,b));
+                   resultante.SetPixel(x, y, Color.FromArgb(r,g,b));
 
                 }
                 //Avanzamos el color
@@ -193,6 +247,18 @@ namespace Proyecto_Procesamiento_de_Imagenes
                 g1 = (g1 + dg);
                 b1 = (b1 + db);
             }
+            for (x = 0; x < AnchoV; x++) {
+
+                for (y = 0; y < AltoV; y++)
+                {
+                    //Obtenemos el color del pixel
+                    rColor = resultante.GetPixel(x, y);
+                    histogramaR[rColor.R]++;
+                    histogramaG[rColor.G]++;
+                    histogramaB[rColor.B]++;
+                }
+            }
+            MostrarHistogramas(histogramaR, histogramaG, histogramaB);
 
             this.Invalidate();
 
@@ -200,6 +266,8 @@ namespace Proyecto_Procesamiento_de_Imagenes
 
         private void BTN_Grises_Click(object sender, EventArgs e) {
             //Convertimos la imagen en tonos de grises
+
+            LimpiarHistogramas();
 
             int x = 0;
             int y = 0;
@@ -230,7 +298,17 @@ namespace Proyecto_Procesamiento_de_Imagenes
 
                 }
             }
+            for (x = 0; x < AnchoV; x++) {
 
+                for (y = 0; y < AltoV; y++) {
+                    //Obtenemos el color del pixel
+                    rColor = resultante.GetPixel(x, y);
+                    histogramaR[rColor.R]++;
+                    histogramaG[rColor.G]++;
+                    histogramaB[rColor.B]++;
+                }
+            }
+            MostrarHistogramas(histogramaR, histogramaG, histogramaB);
             this.Invalidate();
 
         }
@@ -238,6 +316,8 @@ namespace Proyecto_Procesamiento_de_Imagenes
         private void BTN_Contraste_Click(object sender, EventArgs e){
 
             //Modificamos el contraste de la imagen
+
+            LimpiarHistogramas();
 
             int contraste = 30; //El valor va de -100 a 100
 
@@ -298,11 +378,26 @@ namespace Proyecto_Procesamiento_de_Imagenes
                 }
             }
 
+            for (x = 0; x < AnchoV; x++) {
+
+                for (y = 0; y < AltoV; y++) {
+                    //Obtenemos el color del pixel
+                    rColor = resultante.GetPixel(x, y);
+                    histogramaR[rColor.R]++;
+                    histogramaG[rColor.G]++;
+                    histogramaB[rColor.B]++;
+                }
+            }
+            MostrarHistogramas(histogramaR, histogramaG, histogramaB);
+
             this.Invalidate();
 
         }
 
         private void BTN_Ruido_Click(object sender, EventArgs e) {
+
+            LimpiarHistogramas();
+
             int x = 0;
             int y = 0;
             int porcentaje = 15;
@@ -344,6 +439,20 @@ namespace Proyecto_Procesamiento_de_Imagenes
             }
 
             this.Invalidate();
+
+
+            for (x = 0; x < AnchoV; x++) {
+
+                for (y = 0; y < AltoV; y++) {
+
+                    //Obtenemos el color del pixel
+                    rColor = resultante.GetPixel(x, y);
+                    histogramaR[rColor.R]++;
+                    histogramaG[rColor.G]++;
+                    histogramaB[rColor.B]++;
+                }
+            }
+            MostrarHistogramas(histogramaR, histogramaG, histogramaB);
         }
 
         private void BTN_VIDEOS_Click(object sender, EventArgs e) {
@@ -369,7 +478,9 @@ namespace Proyecto_Procesamiento_de_Imagenes
         }
 
         private void BTN_Original_Click(object sender, EventArgs e){
-           
+
+            LimpiarHistogramas();
+
             int x = 0;
             int y = 0;
 
@@ -391,10 +502,46 @@ namespace Proyecto_Procesamiento_de_Imagenes
             }
 
             this.Invalidate();
+
+
+            for (x = 0; x < AnchoV; x++) {
+
+                for (y = 0; y < AltoV; y++) {
+
+                    //Obtenemos el color del pixel
+                    oColor = resultante.GetPixel(x, y);
+                    histogramaR[oColor.R]++;
+                    histogramaG[oColor.G]++;
+                    histogramaB[oColor.B]++;
+                }
+            }
+            MostrarHistogramas(histogramaR, histogramaG, histogramaB);
         }
 
-    
+        private void LimpiarHistogramas() {
+        
+            hformR.Hide();
+            hformG.Hide();
+            hformB.Hide();
+        
+         
         }
+        private void MostrarHistogramas(int[] histogramaR, int[] histogramaG, int[] histogramaB)
+        {
+            hformR = new Histograma(histogramaR, "Rojo");
+            hformR.Text = "Rojo";
+            hformR.Show();
+            hformG = new Histograma(histogramaG, "Verde");
+            hformG.Location = new Point(950, 150);
+            hformG.Text = "Verde";
+            hformG.Show();
+            hformB = new Histograma(histogramaB, "Azul");
+            hformB.Text = "Azúl";
+            hformB.Location = new Point(650, 350);
+            hformB.Show();
+        }
+
+    }
 
     }
 

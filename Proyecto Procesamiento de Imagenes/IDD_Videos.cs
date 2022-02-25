@@ -42,8 +42,8 @@ namespace Proyecto_Procesamiento_de_Imagenes {
         private void BTN_IMAGEN_Click(object sender, EventArgs e) {
 
             //Abrimos la ventana
-            IDD_Videos Pvideos = new IDD_Videos();
-            Pvideos.Show();
+            IDD_Imagenes Pimagen = new IDD_Imagenes();
+            Pimagen.Show();
 
             //Cerramos la ventana
             this.Hide();
@@ -441,6 +441,9 @@ namespace Proyecto_Procesamiento_de_Imagenes {
             imageBox1.Image = myImage;
         }
 
- 
+        private void IDD_Videos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
