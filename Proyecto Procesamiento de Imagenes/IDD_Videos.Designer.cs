@@ -60,6 +60,7 @@
             // BTN_Salir
             // 
             this.BTN_Salir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(16)))), ((int)(((byte)(29)))));
+            this.BTN_Salir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BTN_Salir.ForeColor = System.Drawing.SystemColors.Control;
             this.BTN_Salir.Location = new System.Drawing.Point(397, 21);
             this.BTN_Salir.Name = "BTN_Salir";
@@ -192,6 +193,7 @@
             // BTN_Contraste
             // 
             this.BTN_Contraste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
+            this.BTN_Contraste.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BTN_Contraste.Location = new System.Drawing.Point(94, 307);
             this.BTN_Contraste.Name = "BTN_Contraste";
             this.BTN_Contraste.Size = new System.Drawing.Size(143, 46);
@@ -214,6 +216,7 @@
             // BTN_Examinar
             // 
             this.BTN_Examinar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
+            this.BTN_Examinar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BTN_Examinar.ForeColor = System.Drawing.SystemColors.Control;
             this.BTN_Examinar.Location = new System.Drawing.Point(117, 835);
             this.BTN_Examinar.Name = "BTN_Examinar";
@@ -278,6 +281,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // BTN_Pausa
@@ -312,6 +316,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IDD_Videos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IDD_Videos_FormClosed);
             this.Load += new System.EventHandler(this.IDD_Videos_Load);
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

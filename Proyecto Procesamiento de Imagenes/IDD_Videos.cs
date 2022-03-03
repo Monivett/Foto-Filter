@@ -19,8 +19,6 @@ namespace Proyecto_Procesamiento_de_Imagenes {
     public partial class IDD_Videos : Form {
 
         String Filtro;
-
-
         Capture captureVideo;
         Image<Bgr, Byte> currentFrame;
         Bitmap temp;
@@ -28,7 +26,7 @@ namespace Proyecto_Procesamiento_de_Imagenes {
         private String ruta = "";
         private Bitmap original;
         private Bitmap resultante;
-
+        OpenFileDialog videoDoc = new OpenFileDialog();
 
         public IDD_Videos() {
             InitializeComponent();
@@ -52,47 +50,56 @@ namespace Proyecto_Procesamiento_de_Imagenes {
         private void BTN_Salir_Click(object sender, EventArgs e) {
             //Cerramos la aplicación
             this.Close();
+            Application.Exit();
         }
 
         private void BTN_Examinar_Click(object sender, EventArgs e) {
 
-            OpenFileDialog videoDoc = new OpenFileDialog();
+         
 
             videoDoc.Filter = "Files (*.mp4)|*.mp4";
 
             if (videoDoc.ShowDialog() == DialogResult.OK) {
 
                 ruta = videoDoc.FileName;
-                captureVideo = new Capture(videoDoc.FileName);
+
+                captureVideo = new Emgu.CV.Capture(videoDoc.FileName);
                 currentFrame = captureVideo.QueryFrame().Resize(700, 290, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
                 imageBox1.Image = currentFrame;
+            
 
                 lblRuta.Text = ruta;
             }
+     
+
 
         }
-
-        private void BTN_Play_Click(object sender, EventArgs e)
-        {
-            if (currentFrame != null)
-            {
+        private void ProcessFrame(object sender, EventArgs arg) {
+            currentFrame = captureVideo.QueryFrame().Resize(700, 290, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+        }
+        private void BTN_Play_Click(object sender, EventArgs e) {
+            if (currentFrame != null) {
+              
+              
                 timer1.Enabled = true;
+               
             }
 
         }
 
         private void BTN_Invertir_Click(object sender, EventArgs e) {
+         
             Filtro = "Invertir";
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
 
-            currentFrame = captureVideo.QueryFrame().Resize(700, 290, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC); ;
+            currentFrame = captureVideo.QueryFrame().Resize(700, 290, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+        
             temp = currentFrame.Bitmap;
-
+           
             if (currentFrame != null) {
-
-                imageBox1.Image = currentFrame;
+            
 
                 if (Filtro == "Invertir") {
                     Invertir(temp);
@@ -115,6 +122,8 @@ namespace Proyecto_Procesamiento_de_Imagenes {
                 if (Filtro == "Original") {
                     Original(temp);
                 }
+             
+                imageBox1.Image = currentFrame;
             }
             else {
                 timer1.Enabled = false;
@@ -163,11 +172,9 @@ namespace Proyecto_Procesamiento_de_Imagenes {
             Color rColor = new Color();
             Color oColor = new Color();
 
-            for (x = 1; x < original.Width - 1; x++)
-            {
+            for (x = 1; x < original.Width - 1; x++) {
 
-                for (y = 1; y < original.Height - 1; y++)
-                {
+                for (y = 1; y < original.Height - 1; y++) {
 
                     //Obtenemos el color del pixel
                     oColor = original.GetPixel(x, y);
@@ -177,12 +184,20 @@ namespace Proyecto_Procesamiento_de_Imagenes {
 
                     //Colocamos el color en el resultante
                     resultante.SetPixel(x, y, rColor);
-
+                  
+          
                 }
+            
             }
 
+
+
+
             Image<Bgr, Byte> myImage = new Image<Bgr, Byte>(resultante);
+            myImage = captureVideo.QueryFrame().Resize(700, 290, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             imageBox1.Image = myImage;
+            Application.Idle += ProcessFrame;
+      
         }
 
         private void Grises(Bitmap original) {
@@ -217,7 +232,9 @@ namespace Proyecto_Procesamiento_de_Imagenes {
             }
 
             Image<Bgr, Byte> myImage = new Image<Bgr, Byte>(resultante);
+            myImage = captureVideo.QueryFrame().Resize(700, 290, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             imageBox1.Image = myImage;
+            Application.Idle += ProcessFrame;
         }
 
         private void Gradiante(Bitmap original) {
@@ -293,7 +310,9 @@ namespace Proyecto_Procesamiento_de_Imagenes {
             }
 
             Image<Bgr, Byte> myImage = new Image<Bgr, Byte>(resultante);
+            myImage = captureVideo.QueryFrame().Resize(700, 290, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             imageBox1.Image = myImage;
+            Application.Idle += ProcessFrame;
         }
 
         private void Contraste(Bitmap original) {
@@ -362,7 +381,9 @@ namespace Proyecto_Procesamiento_de_Imagenes {
             }
 
             Image<Bgr, Byte> myImage = new Image<Bgr, Byte>(resultante);
+            myImage = captureVideo.QueryFrame().Resize(700, 290, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             imageBox1.Image = myImage;
+            Application.Idle += ProcessFrame;
         }
 
         private void Ruido(Bitmap original) {
@@ -408,9 +429,10 @@ namespace Proyecto_Procesamiento_de_Imagenes {
 
                 }
             }
-
             Image<Bgr, Byte> myImage = new Image<Bgr, Byte>(resultante);
+            myImage = captureVideo.QueryFrame().Resize(700, 290, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             imageBox1.Image = myImage;
+            Application.Idle += ProcessFrame;
 
         }
 
@@ -436,14 +458,20 @@ namespace Proyecto_Procesamiento_de_Imagenes {
 
                 }
             }
-
             Image<Bgr, Byte> myImage = new Image<Bgr, Byte>(resultante);
+            myImage = captureVideo.QueryFrame().Resize(700, 290, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             imageBox1.Image = myImage;
+            Application.Idle += ProcessFrame;
         }
 
         private void IDD_Videos_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void IDD_Videos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

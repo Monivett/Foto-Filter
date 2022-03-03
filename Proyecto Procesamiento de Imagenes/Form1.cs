@@ -42,7 +42,8 @@ namespace Proyecto_Procesamiento_de_Imagenes {
         }
 
         private void BTN_Examinar_Click(object sender, EventArgs e){
-           
+
+            openFileDialog1.Filter = "Files|*.jpg;*.jpeg;*.png";
             if (openFileDialog1.ShowDialog() == DialogResult.OK) { //Si el usuario dio OK al open dialog
              
                 //Se carga la imagen
@@ -456,7 +457,7 @@ namespace Proyecto_Procesamiento_de_Imagenes {
         }
 
         private void BTN_VIDEOS_Click(object sender, EventArgs e) {
-            
+            LimpiarHistogramas();
             //Abrimos la ventana
             IDD_Videos Pvideos = new IDD_Videos();
             Pvideos.Show();
@@ -526,6 +527,12 @@ namespace Proyecto_Procesamiento_de_Imagenes {
         
          
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void MostrarHistogramas(int[] histogramaR, int[] histogramaG, int[] histogramaB)
         {
             hformR = new Histograma(histogramaR, "Rojo");
