@@ -15,11 +15,7 @@ namespace Proyecto_Procesamiento_de_Imagenes {
         private int[] histogramaR = new int[256];
         private int[] histogramaG = new int[256];
         private int[] histogramaB = new int[256];
-        private int[,] conv3x3 = new int[3, 3];
-        private int factor;
-        private int offset;
-        int[] popo;
-
+  
         //VENTANAS
         Histograma hformR;
         Histograma hformG;
@@ -457,7 +453,10 @@ namespace Proyecto_Procesamiento_de_Imagenes {
         }
 
         private void BTN_VIDEOS_Click(object sender, EventArgs e) {
+            if (histogramaR[0]!=0) {
             LimpiarHistogramas();
+            }
+           
             //Abrimos la ventana
             IDD_Videos Pvideos = new IDD_Videos();
             Pvideos.Show();
