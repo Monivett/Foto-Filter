@@ -41,7 +41,6 @@
             this.BTN_Ruido = new System.Windows.Forms.Button();
             this.BTN_Grises = new System.Windows.Forms.Button();
             this.BTN_Contraste = new System.Windows.Forms.Button();
-            this.BTN_GUARDAR = new System.Windows.Forms.Button();
             this.BTN_Examinar = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.lblRuta = new System.Windows.Forms.Label();
@@ -202,17 +201,6 @@
             this.BTN_Contraste.UseVisualStyleBackColor = false;
             this.BTN_Contraste.Click += new System.EventHandler(this.BTN_Contraste_Click);
             // 
-            // BTN_GUARDAR
-            // 
-            this.BTN_GUARDAR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
-            this.BTN_GUARDAR.ForeColor = System.Drawing.SystemColors.Control;
-            this.BTN_GUARDAR.Location = new System.Drawing.Point(576, 831);
-            this.BTN_GUARDAR.Name = "BTN_GUARDAR";
-            this.BTN_GUARDAR.Size = new System.Drawing.Size(160, 54);
-            this.BTN_GUARDAR.TabIndex = 53;
-            this.BTN_GUARDAR.Text = "Guardar vídeo";
-            this.BTN_GUARDAR.UseVisualStyleBackColor = false;
-            // 
             // BTN_Examinar
             // 
             this.BTN_Examinar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
@@ -309,7 +297,6 @@
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.BTN_Original);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.BTN_GUARDAR);
             this.Controls.Add(this.BTN_Examinar);
             this.Controls.Add(this.panel3);
             this.Name = "IDD_Videos";
@@ -341,7 +328,6 @@
         private System.Windows.Forms.Button BTN_Ruido;
         private System.Windows.Forms.Button BTN_Grises;
         private System.Windows.Forms.Button BTN_Contraste;
-        private System.Windows.Forms.Button BTN_GUARDAR;
         private System.Windows.Forms.Button BTN_Examinar;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lblRuta;

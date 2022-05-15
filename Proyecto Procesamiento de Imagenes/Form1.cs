@@ -86,12 +86,18 @@ namespace Proyecto_Procesamiento_de_Imagenes {
 
         private void BTN_GUARDAR_Click(object sender, EventArgs e){
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK){ //Si el usuario da OK
+            if(original!= null) {
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK){ //Si el usuario da OK
 
                                 //Ruta de la imagen       //Ruta donde la queremos guardar y el formato
-                resultante.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Png); //Guardamos el bitmap
+                resultante.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Jpeg); //Guardamos el bitmap
 
+                 }
+            } else {
+                MessageBox.Show("No se ha cargado una imagen", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+          
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e){
@@ -115,22 +121,12 @@ namespace Proyecto_Procesamiento_de_Imagenes {
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
-        }
-
-        private void Imagen_Contorno(object sender, EventArgs e)
-        {
-
-        }
-
-     
 
         private void BTN_Invertir_Click(object sender, EventArgs e){
             
             LimpiarHistogramas();
-
+            if (original != null) {
             //Invertimos la imagen, saca su negativo
             int x = 0;
             int y = 0;
@@ -170,94 +166,106 @@ namespace Proyecto_Procesamiento_de_Imagenes {
 
 
             this.Invalidate();
+            }
+            else{
+                MessageBox.Show("No se ha cargado una imagen", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
             
         }
 
         private void BTN_GRADIENTE_Click(object sender, EventArgs e) {
 
-            float r1 = 120;
-            float g1 = 230;
-            float b1 = 120;
+            if (original != null) {
 
-            float r2 = 230;
-            float g2 = 100;
-            float b2 = 100;
+                float r1 = 120;
+                float g1 = 230;
+                float b1 = 120;
 
-            int r = 0;
-            int g = 0;
-            int b = 0;
+                float r2 = 230;
+                float g2 = 100;
+                float b2 = 100;
 
-            float dr = (r2 - r1) / AnchoV;
-            float dg = (g2 - g1) / AnchoV;
-            float db = (b2 - b1) / AnchoV;
+                int r = 0;
+                int g = 0;
+                int b = 0;
 
-            int x = 0;
-            int y = 0;
+                float dr = (r2 - r1) / AnchoV;
+                float dg = (g2 - g1) / AnchoV;
+                float db = (b2 - b1) / AnchoV;
 
-            Color oColor;
-            Color rColor;
+                int x = 0;
+                int y = 0;
 
-            //Obtenemos los tonos de gris
-            BTN_Grises_Click(sender, e);
+                Color oColor;
+                Color rColor;
+
+                //Obtenemos los tonos de gris
+                BTN_Grises_Click(sender, e);
 
 
-            LimpiarHistogramas();
+                LimpiarHistogramas();
 
-            for (x = 0; x < AnchoV; x++){
+                for (x = 0; x < AnchoV; x++){
 
-                for (y = 0; y < AltoV; y++){
+                    for (y = 0; y < AltoV; y++){
 
-                    //Obtenemos el color del pixel
-                    oColor = resized.GetPixel(x, y);
+                        //Obtenemos el color del pixel
+                        oColor = resized.GetPixel(x, y);
 
-                    //Calculamos el color
-                    r = (int)((r1 / 255.0f) * oColor.R);
-                    g = (int)((g1 / 255.0f) * oColor.G);
-                    b = (int)((b1 / 255.0f) * oColor.B);
+                        //Calculamos el color
+                        r = (int)((r1 / 255.0f) * oColor.R);
+                        g = (int)((g1 / 255.0f) * oColor.G);
+                        b = (int)((b1 / 255.0f) * oColor.B);
 
-                    if (r > 255) {
-                        r = 255;
-                    }else if (r<0) {
-                        r = 0;
+                        if (r > 255){
+                            r = 255;
+                        }
+                        else if (r < 0){
+                            r = 0;
+                        }
+
+                        if (g > 255){
+                            g = 255;
+                        }
+                        else if (g < 0){
+                            g = 0;
+                        }
+
+                        if (b > 255){
+                            b = 255;
+                        }
+                        else if (b < 0){
+                            b = 0;
+                        }
+
+                        //Colocamos el color en el resultante
+                        resultante.SetPixel(x, y, Color.FromArgb(r, g, b));
+
                     }
-
-                    if (g > 255) {
-                        g = 255;
-                    }
-                    else if (g < 0) {
-                        g = 0;
-                    }
-
-                    if (b > 255) {
-                        b = 255;
-                    }
-                    else if (b < 0) {
-                        b = 0;
-                    }
-
-                    //Colocamos el color en el resultante
-                   resultante.SetPixel(x, y, Color.FromArgb(r,g,b));
-
+                    //Avanzamos el color
+                    r1 = (r1 + dr);
+                    g1 = (g1 + dg);
+                    b1 = (b1 + db);
                 }
-                //Avanzamos el color
-                r1 = (r1 + dr);
-                g1 = (g1 + dg);
-                b1 = (b1 + db);
-            }
-            for (x = 0; x < AnchoV; x++) {
-
-                for (y = 0; y < AltoV; y++)
+                for (x = 0; x < AnchoV; x++)
                 {
-                    //Obtenemos el color del pixel
-                    rColor = resultante.GetPixel(x, y);
-                    histogramaR[rColor.R]++;
-                    histogramaG[rColor.G]++;
-                    histogramaB[rColor.B]++;
-                }
-            }
-            MostrarHistogramas(histogramaR, histogramaG, histogramaB);
 
-            this.Invalidate();
+                    for (y = 0; y < AltoV; y++)
+                    {
+                        //Obtenemos el color del pixel
+                        rColor = resultante.GetPixel(x, y);
+                        histogramaR[rColor.R]++;
+                        histogramaG[rColor.G]++;
+                        histogramaB[rColor.B]++;
+                    }
+                }
+                MostrarHistogramas(histogramaR, histogramaG, histogramaB);
+
+                this.Invalidate();
+            } else{
+                MessageBox.Show("No se ha cargado una imagen", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -266,55 +274,64 @@ namespace Proyecto_Procesamiento_de_Imagenes {
 
             LimpiarHistogramas();
 
-            int x = 0;
-            int y = 0;
-            resultante = new Bitmap(AnchoV, AltoV);
-            Color rColor = new Color();
-            Color oColor = new Color();
+            if (original != null) {
+                int x = 0;
+                int y = 0;
+                resultante = new Bitmap(AnchoV, AltoV);
+                Color rColor = new Color();
+                Color oColor = new Color();
 
-            float g = 0;
+                float g = 0;
 
-            for (x = 0; x < AnchoV; x++) {
+                for (x = 0; x < AnchoV; x++)
+                {
 
-                for (y = 0; y < AltoV; y++) {
+                    for (y = 0; y < AltoV; y++)
+                    {
 
-                    //Obtenemos el color del pixel
-                    oColor = resized.GetPixel(x, y);
+                        //Obtenemos el color del pixel
+                        oColor = resized.GetPixel(x, y);
 
-                    //0.2126 0.7152 0.0722 //Colorimetrica, basada en percepción humana
-                    //0.299 0.587 0.114 //Luma basado en el brillo
-                    //0.267 0.678 0.0593
+                        //0.2126 0.7152 0.0722 //Colorimetrica, basada en percepción humana
+                        //0.299 0.587 0.114 //Luma basado en el brillo
+                        //0.267 0.678 0.0593
 
-                    g = oColor.R * 0.299f + oColor.G * 0.587f + oColor.B * 0.114f;
+                        g = oColor.R * 0.299f + oColor.G * 0.587f + oColor.B * 0.114f;
 
-                    //Procesamos y obtenemos el nuevo color
-                    rColor = Color.FromArgb((int)g, (int)g, (int)g);
+                        //Procesamos y obtenemos el nuevo color
+                        rColor = Color.FromArgb((int)g, (int)g, (int)g);
 
-                    //Colocamos el color en el resultante
-                    resultante.SetPixel(x, y, rColor);
+                        //Colocamos el color en el resultante
+                        resultante.SetPixel(x, y, rColor);
 
+                    }
                 }
-            }
-            for (x = 0; x < AnchoV; x++) {
+                for (x = 0; x < AnchoV; x++)
+                {
 
-                for (y = 0; y < AltoV; y++) {
-                    //Obtenemos el color del pixel
-                    rColor = resultante.GetPixel(x, y);
-                    histogramaR[rColor.R]++;
-                    histogramaG[rColor.G]++;
-                    histogramaB[rColor.B]++;
+                    for (y = 0; y < AltoV; y++)
+                    {
+                        //Obtenemos el color del pixel
+                        rColor = resultante.GetPixel(x, y);
+                        histogramaR[rColor.R]++;
+                        histogramaG[rColor.G]++;
+                        histogramaB[rColor.B]++;
+                    }
                 }
+                MostrarHistogramas(histogramaR, histogramaG, histogramaB);
+                this.Invalidate();
+            } else {
+                MessageBox.Show("No se ha cargado una imagen", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MostrarHistogramas(histogramaR, histogramaG, histogramaB);
-            this.Invalidate();
 
         }
 
         private void BTN_Contraste_Click(object sender, EventArgs e){
 
-            //Modificamos el contraste de la imagen
+            if (original != null){
+                //Modificamos el contraste de la imagen
 
-            LimpiarHistogramas();
+                LimpiarHistogramas();
 
             int contraste = 30; //El valor va de -100 a 100
 
@@ -388,12 +405,16 @@ namespace Proyecto_Procesamiento_de_Imagenes {
             MostrarHistogramas(histogramaR, histogramaG, histogramaB);
 
             this.Invalidate();
+            }else{
+                MessageBox.Show("No se ha cargado una imagen", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void BTN_Ruido_Click(object sender, EventArgs e) {
 
-            LimpiarHistogramas();
+            if (original != null){
+                LimpiarHistogramas();
 
             int x = 0;
             int y = 0;
@@ -450,6 +471,9 @@ namespace Proyecto_Procesamiento_de_Imagenes {
                 }
             }
             MostrarHistogramas(histogramaR, histogramaG, histogramaB);
+            } else{
+                MessageBox.Show("No se ha cargado una imagen", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BTN_VIDEOS_Click(object sender, EventArgs e) {
@@ -479,7 +503,8 @@ namespace Proyecto_Procesamiento_de_Imagenes {
 
         private void BTN_Original_Click(object sender, EventArgs e){
 
-            LimpiarHistogramas();
+            if (original != null){
+                LimpiarHistogramas();
 
             int x = 0;
             int y = 0;
@@ -516,13 +541,21 @@ namespace Proyecto_Procesamiento_de_Imagenes {
                 }
             }
             MostrarHistogramas(histogramaR, histogramaG, histogramaB);
+            }else{
+                MessageBox.Show("No se ha cargado una imagen", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LimpiarHistogramas() {
         
+            if(original!= null){
+
             hformR.Hide();
             hformG.Hide();
             hformB.Hide();
+
+            }
+         
         
          
         }
@@ -530,6 +563,82 @@ namespace Proyecto_Procesamiento_de_Imagenes {
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BTN_MOSAICO_Click(object sender, EventArgs e) {
+
+            if (original != null){
+                LimpiarHistogramas();
+
+                int x = 0;
+            int y = 0;
+            int mosaico = 8; //La imagen debe de poderser dividir exactamente entre este valor
+
+            int xm = 0;
+            int ym = 0;
+
+            Color rColor;
+            Color oColor;
+
+            int rs = 0;
+            int gs = 0;
+            int bs = 0;
+
+            int r = 0;
+            int g = 0;
+            int b = 0;
+
+            resultante = new Bitmap(AnchoV, AltoV);
+
+            for(x=0; x< 350 - mosaico; x+= mosaico){
+                for(y=0; y<300 - mosaico; y += mosaico){
+                    rs = 0;
+                    gs = 0;
+                    bs = 0;
+                    //Obtenemos el promedio
+                    for(xm=x; xm<(x+mosaico); xm++)
+                        for(ym=y; ym<(y+mosaico); ym++){
+                            oColor = resized.GetPixel(xm, ym);
+                            rs += oColor.R;
+                            gs += oColor.G;
+                            bs += oColor.B;
+
+                        }
+                        r = rs / (mosaico * mosaico);
+                        g = gs / (mosaico * mosaico);
+                        b = bs / (mosaico * mosaico);
+
+                        rColor = Color.FromArgb(r, g, b);
+
+                        //Dibujamos el mosaico
+                        for(xm=x; xm<(x+mosaico); xm++){
+                            for(ym=y; ym<(y + mosaico); ym++){
+                                resultante.SetPixel(xm, ym, rColor);
+                            }
+                        }
+                        this.Invalidate();
+                       
+                    }
+
+                }
+                for (x = 0; x < AnchoV; x++)
+                {
+
+                    for (y = 0; y < AltoV; y++)
+                    {
+
+                        //Obtenemos el color del pixel
+                        oColor = resultante.GetPixel(x, y);
+                        histogramaR[oColor.R]++;
+                        histogramaG[oColor.G]++;
+                        histogramaB[oColor.B]++;
+                    }
+                }
+                MostrarHistogramas(histogramaR, histogramaG, histogramaB);
+            }
+            else{
+                    MessageBox.Show("No se ha cargado una imagen", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
         }
 
         private void MostrarHistogramas(int[] histogramaR, int[] histogramaG, int[] histogramaB)

@@ -49,6 +49,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.BTN_MOSAICO = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -95,6 +96,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.BTN_MOSAICO);
             this.groupBox2.Controls.Add(this.BTN_GRADIENTE);
             this.groupBox2.Controls.Add(this.BTN_Invertir);
             this.groupBox2.Controls.Add(this.BTN_Ruido);
@@ -103,7 +105,7 @@
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Location = new System.Drawing.Point(622, 191);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(309, 469);
+            this.groupBox2.Size = new System.Drawing.Size(309, 552);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtros";
@@ -179,7 +181,7 @@
             // 
             this.BTN_Original.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
             this.BTN_Original.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BTN_Original.Location = new System.Drawing.Point(705, 694);
+            this.BTN_Original.Location = new System.Drawing.Point(715, 769);
             this.BTN_Original.Name = "BTN_Original";
             this.BTN_Original.Size = new System.Drawing.Size(160, 54);
             this.BTN_Original.TabIndex = 11;
@@ -277,6 +279,17 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Azúl";
             // 
+            // BTN_MOSAICO
+            // 
+            this.BTN_MOSAICO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(93)))), ((int)(((byte)(111)))));
+            this.BTN_MOSAICO.Location = new System.Drawing.Point(93, 481);
+            this.BTN_MOSAICO.Name = "BTN_MOSAICO";
+            this.BTN_MOSAICO.Size = new System.Drawing.Size(143, 46);
+            this.BTN_MOSAICO.TabIndex = 11;
+            this.BTN_MOSAICO.Text = "Mosaico";
+            this.BTN_MOSAICO.UseVisualStyleBackColor = false;
+            this.BTN_MOSAICO.Click += new System.EventHandler(this.BTN_MOSAICO_Click);
+            // 
             // IDD_Imagenes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -330,6 +343,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button BTN_MOSAICO;
     }
 }
 
