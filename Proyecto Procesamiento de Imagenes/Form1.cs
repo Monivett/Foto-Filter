@@ -94,6 +94,7 @@ namespace Proyecto_Procesamiento_de_Imagenes {
                 resultante.Save(saveFileDialog1.FileName, System.Drawing.Imaging.ImageFormat.Jpeg); //Guardamos el bitmap
 
                  }
+
             } else {
                 MessageBox.Show("No se ha cargado una imagen", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -120,8 +121,6 @@ namespace Proyecto_Procesamiento_de_Imagenes {
             }
 
         }
-
-
 
         private void BTN_Invertir_Click(object sender, EventArgs e){
             
@@ -570,7 +569,7 @@ namespace Proyecto_Procesamiento_de_Imagenes {
             if (original != null){
                 LimpiarHistogramas();
 
-                int x = 0;
+            int x = 0;
             int y = 0;
             int mosaico = 8; //La imagen debe de poderser dividir exactamente entre este valor
 
